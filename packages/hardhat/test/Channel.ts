@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { Channel } from "../typechain-types";
 import { Signer } from "ethers";
+import hash_tip from "../deploy/hashchain";
 
 describe("Channel Contract", function () {
   let channel: Channel;
@@ -17,7 +18,7 @@ describe("Channel Contract", function () {
     recipientAddress = await recipient.getAddress();
     timeout = 24 * 60 * 60; // 1 day in seconds
     margin = ethers.parseEther("1"); // 1 Ether in Wei
-    tip = ethers.keccak256(ethers.toUtf8Bytes("secret"));
+    tip = hash_tip;
   });
 
   beforeEach(async function () {
